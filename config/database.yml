@@ -1,0 +1,20 @@
+login: &login
+  adapter: mysql
+  host: localhost
+  username: root
+  password: root
+
+development:
+  database: refinery_with_users_development
+  <<: *login
+
+test:
+  database: refinery_with_users_test
+  <<: *login
+
+production:
+  database: refinery_with_users_production
+  adapter: mysql
+  host: localhost
+  username: refinery_with_users_production_login
+  password: refinery_with_users_production_password

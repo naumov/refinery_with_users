@@ -1,0 +1,18 @@
+login: &login
+  access_key_id: 
+  secret_access_key: 
+
+development:
+  bucket_name: refinery_with_users_development
+  <<: *login
+  distribution_domain: 
+
+test:
+  bucket_name: refinery_with_users_test
+  <<: *login
+  distribution_domain: 
+
+production:
+  bucket_name: refinery_with_users_production
+  <<: *login
+  distribution_domain: 
