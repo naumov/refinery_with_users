@@ -1,20 +1,17 @@
-login: &login
-  adapter: mysql
-  host: localhost
-  username: root
-  password: root
-
 development:
-  database: refinery_with_users_development
-  <<: *login
-
-test:
-  database: refinery_with_users_test
-  <<: *login
+  database: db/development.sqlite3
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
 
 production:
-  database: refinery_with_users_production
-  adapter: mysql
-  host: localhost
-  username: refinery_with_users_production_login
-  password: refinery_with_users_production_password
+  database: db/producrion.sqlite3
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+test:
+  database: db/test.sqlite3
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000

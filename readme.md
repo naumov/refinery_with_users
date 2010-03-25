@@ -1,3 +1,28 @@
+To install:
+------------------------------
+    sudo gem install refinerycms
+    git clone git@github.com:naumov/refinery_with_users.git
+    cd refinery_with_users
+    edit config/database.yml
+    rake db:setup
+    rake db:migrate
+    ruby script/server
+    
+Navigate to localhost:3000
+
+Access to admin area:
+------------------------------
+http://localhost:3000/admin
+login: admin
+password: admin
+
+You can set page as private or public while editing a page.
+Set Public to Yes/No.
+Private is default to all pages.
+
+
+
+
 # Refinery CMS
 
 __An open source Ruby on Rails content management system for small business.__

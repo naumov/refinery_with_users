@@ -1,9 +1,9 @@
-[{:name => "site_name", :value => "Company Name"},
+[{:name => "site_name", :value => "Refinery With Users"},
   {:name => "new_page_parts", :value => false},
   {:name => "activity_show_limit", :value => 18},
   {:name => "preferred_image_view", :value => :grid},
   {:name => "analytics_page_code", :value => "UA-xxxxxx-x"},
-  {:name => "theme", :value => "demolicious"},
+  {:name => "theme", :value => "bit"},
   {:name => "image_thumbnails", :value => {
     :dialog_thumb => 'c106x106',
     :grid => 'c135x135',
@@ -16,6 +16,16 @@
   RefinerySetting[setting[:name].to_sym] = setting[:value]
   RefinerySetting.find_by_name(setting[:name].to_s).update_attributes({:destroyable => false})
 end
+
+admin = User.create(
+  :login=>'admin',
+  :email=>'admin@exmpl.com',
+  :crypted_password=>'3975cbc854fed99e39c2ab38ab76fb1007dba621', # admin
+  :password_salt=>'k949QMNvnnNqvmOikp8n',
+  :superuser=>true
+)
+admin.plugins = Refinery::Plugins.registered.titles
+admin.update_attribute(:superuser, true) 
 
 InquirySetting.create(:name => "Confirmation Body", :value => "Thank you for your inquiry %name%,\n\nThis email is a receipt to confirm we have received your inquiry and we'll be in touch shortly.\n\nThanks.", :destroyable => false)
 InquirySetting.create(:name => "Notification Recipients", :value => "", :destroyable => false)
@@ -34,16 +44,16 @@ Page.create(:title => "Home",
               :body => "<p>This is another block of content over here.</p>"
             })
 
-Page.create(:title => "About Us",
+Page.create(:title => "Private Page",
             :deletable => true,
             :position => 1).parts.create(
             {
               :title => "Body",
-              :body => "<p>This is just a standard text page example. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin metus dolor, hendrerit sit amet, aliquet nec, posuere sed, purus. Nullam et velit iaculis odio sagittis placerat. Duis metus tellus, pellentesque ut, luctus id, egestas a, lorem. Praesent vitae mauris. Aliquam sed nulla. Sed id nunc vitae leo suscipit viverra. Proin at leo ut lacus consequat rhoncus. In hac habitasse platea dictumst. Nunc quis tortor sed libero hendrerit dapibus.\n\nInteger interdum purus id erat. Duis nec velit vitae dolor mattis euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse pellentesque dignissim lacus. Nulla semper euismod arcu. Suspendisse egestas, erat a consectetur dapibus, felis orci cursus eros, et sollicitudin purus urna et metus. Integer eget est sed nunc euismod vestibulum. Integer nulla dui, tristique in, euismod et, interdum imperdiet, enim. Mauris at lectus. Sed egestas tortor nec mi.</p>"
+              :body => "<h2>Is availiable to registered users only</h2><p>Some private text.</p>"
             }).page.parts.create(
             {
               :title => "Side Body",
-              :body => "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fringilla nisi a elit. Duis ultricies orci ut arcu. Ut ac nibh. Duis blandit rhoncus magna. Pellentesque semper risus ut magna. Etiam pulvinar tellus eget diam. Morbi blandit. Donec pulvinar mauris at ligula. Sed pellentesque, ipsum id congue molestie, lectus risus egestas pede, ac viverra diam lacus ac urna. Aenean elit.</p>"
+              :body => ""
             })
 
 Page.create(:title => "Contact Us",

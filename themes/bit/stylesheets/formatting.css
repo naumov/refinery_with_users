@@ -1,0 +1,6 @@
+@import url('/stylesheets/refinery/formatting.css');
+/*  
+    Override default refinery formatting below. 
+    Formatting applies to backend WYSIWYG editors and all frontend. 
+*/
+body { font-family: Arial; line-height:1.4em;}

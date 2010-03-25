@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # The priority is based upon order of creation: first created -> highest priority.
   map.root :controller => "pages", :action => "home"
+  map.signup '/signup', :controller => 'users', :action=>'new'
 
   map.namespace(:admin) do |admin|
     admin.root :controller => 'dashboard', :action => 'index'
