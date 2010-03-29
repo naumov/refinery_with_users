@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "pages", :action => "home"
   map.signup '/signup', :controller => 'users', :action=>'new'
 
+  map.resource :account, :only=>['show','update']
+
   map.namespace(:admin) do |admin|
     admin.root :controller => 'dashboard', :action => 'index'
   end

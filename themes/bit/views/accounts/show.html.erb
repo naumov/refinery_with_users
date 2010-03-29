@@ -1,0 +1,18 @@
+<h2>Account Settings</h2>
+<% form_for @user, :url=>account_path do |f| %>
+  <%= f.error_messages %>
+  
+  <%= f.label :login %>
+  <%= f.text_field :login %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.text_field :password_confirmation %>
+  
+  <p><%= f.submit %></p>
+<% end %>
