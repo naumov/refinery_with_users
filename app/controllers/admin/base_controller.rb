@@ -4,5 +4,9 @@
 # You can extend refinery backend with your own functions here and they will likely not get overriden in an update.
 
 class Admin::BaseController < Refinery::AdminBaseController
+  before_filter :require_admin_user
 
+  def require_admin_user
+     redirect_to root_path if (!current_user || current_user.plugins.blank?)
+  end    
 end
